@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS Now — 2024 Presidential Primary Debates</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #1a56b0;
+    --blue: #0d2d6b;
+    --dem-blue: #1255a8;
+    --rep-red: #1e4d9e;
+    --ink: #0b1e40;
+    --muted: #3a5580;
+    --rule: #b8cfe8;
+    --bg: #eaf1fb;
+    --card-bg: #ffffff;
+    --accent-yellow: #f5c518;
+    --dem-light: #ddeaf9;
+    --rep-light: #d8e8f8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: #071530;
+    color: #8ab2d8;
+    font-size: 11.5px;
+    letter-spacing: .06em;
+    padding: 6px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar a { color: #ccc; text-decoration: none; margin: 0 8px; }
+  .topbar a:hover { color: #fff; }
+
+  /* ── MASTHEAD ── */
+  header.masthead {
+    border-bottom: 4px double var(--ink);
+    padding: 18px 40px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .masthead-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 54px;
+    letter-spacing: -.02em;
+    line-height: 1;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .masthead-logo span { color: var(--red); }
+  .masthead-meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .masthead-tagline {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── NAV ── */
+  nav.primary-nav {
+    background: var(--ink);
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+  }
+  nav.primary-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 11px 16px;
+    display: block;
+    transition: background .15s, color .15s;
+  }
+  nav.primary-nav a:hover, nav.primary-nav a.active {
+    background: var(--red);
+    color: #fff;
+  }
+
+  /* ── BREAKING BANNER ── */
+  .breaking-banner {
+    background: var(--rep-red);
+    color: #fff;
+    padding: 9px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .breaking-tag {
+    background: #fff;
+    color: #1255a8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 40px 40px 30px;
+    border-bottom: 1px solid var(--rule);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    max-width: 780px;
+  }
+  .hero-summary {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: #333;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .hero-byline {
+    font-size: 12.5px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .hero-byline strong { color: var(--ink); }
+
+  /* ── TABS ── */
+  .debate-tabs {
+    display: flex;
+    max-width: 1200px;
+    margin: 32px auto 0;
+    padding: 0 40px;
+    gap: 0;
+    border-bottom: 3px solid var(--ink);
+  }
+  .tab-btn {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 13px 32px;
+    border: none;
+    cursor: pointer;
+    background: #c8d8ee;
+    color: var(--muted);
+    transition: all .2s;
+    border-top: 3px solid transparent;
+    margin-bottom: -3px;
+  }
+  .tab-btn.dem.active {
+    background: var(--card-bg);
+    color: #1255a8;
+    border-top-color: #1255a8;
+    border-left: 1px solid #b8cfe8;
+    border-right: 1px solid #b8cfe8;
+  }
+  .tab-btn.rep.active {
+    background: var(--card-bg);
+    color: #1e4d9e;
+    border-top-color: #1e4d9e;
+    border-left: 1px solid #b8cfe8;
+    border-right: 1px solid #b8cfe8;
+  }
+  .tab-btn:not(.active):hover { background: #afc6e0; color: var(--ink); }
+  .tab-icon { margin-right: 8px; font-size: 18px; }
+
+  /* ── DEBATE PANEL ── */
+  .debate-panel {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 60px;
+    gap: 36px;
+  }
+  .debate-panel.active { display: grid; grid-template-columns: 1fr 340px; }
+
+  /* ── MAIN CONTENT ── */
+  .panel-main {}
+
+  .panel-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 28px;
+  }
+  .party-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+  .party-badge.dem { background: var(--dem-light); color: #1255a8; border: 1px solid #1255a8; }
+  .party-badge.rep { background: #d8e8f8; color: #1e4d9e; border: 1px solid #1e4d9e; }
+
+  .panel-header-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .panel-header-text p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── AUDIO PLAYER ── */
+  .audio-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .audio-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .audio-card-label::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+  .audio-card audio {
+    width: 100%;
+    outline: none;
+  }
+  audio::-webkit-media-controls-panel { background: #f3f3f3; }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 28px 0 20px;
+  }
+  .section-divider span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-divider.dem span { color: #1255a8; }
+  .section-divider.rep span { color: #1e4d9e; }
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .section-divider::before {
+    content: '';
+    width: 28px;
+    height: 3px;
+  }
+  .section-divider.dem::before { background: #1255a8; }
+  .section-divider.rep::before { background: #1e4d9e; }
+
+  /* ── TRANSCRIPT ── */
+  .transcript-container {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    overflow: hidden;
+  }
+  .transcript-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f5fc;
+  }
+  .transcript-header span {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background: #fff;
+    font-size: 12px;
+  }
+  .search-box input {
+    border: none;
+    outline: none;
+    font-size: 12.5px;
+    font-family: 'DM Sans', sans-serif;
+    width: 160px;
+    color: var(--ink);
+  }
+  .search-box input::placeholder { color: #aaa; }
+
+  .transcript-body {
+    max-height: 560px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .transcript-body::-webkit-scrollbar { width: 6px; }
+  .transcript-body::-webkit-scrollbar-track { background: #f0f0f0; }
+  .transcript-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+  .transcript-entry {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .transcript-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .ts-time {
+    font-size: 10.5px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: .05em;
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+  .ts-content {}
+  .ts-speaker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .ts-speaker.dem { color: #1255a8; }
+  .ts-speaker.rep { color: #1e4d9e; }
+  .ts-speaker.mod { color: #4a6490; }
+  .ts-speaker.org { color: #2e6db4; }
+  .ts-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #222;
+  }
+  .ts-text mark {
+    background: #fff176;
+    padding: 0 2px;
+    border-radius: 1px;
+  }
+
+  /* ── SIDEBAR ── */
+  .panel-sidebar {}
+
+  .sidebar-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .sidebar-card-title {
+    padding: 12px 16px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .sidebar-card-title.dem { background: #1255a8; }
+  .sidebar-card-title.rep { background: #1e4d9e; }
+  .sidebar-card-body { padding: 16px; }
+
+  .candidate-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .candidate-item:last-child { border-bottom: none; }
+  .candidate-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .avatar-dem { background: #1255a8; }
+  .avatar-rep { background: #2a5fad; }
+  .candidate-info {}
+  .candidate-name { font-weight: 600; font-size: 14px; }
+  .candidate-role { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+
+  .topic-list { list-style: none; }
+  .topic-list li {
+    padding: 9px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+  }
+  .topic-list li:last-child { border-bottom: none; }
+  .topic-list .topic-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ddd;
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .key-quote {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: #333;
+    border-left: 3px solid var(--dem-blue);
+    padding: 8px 0 8px 14px;
+    margin-bottom: 12px;
+  }
+  .key-quote.rep { border-left-color: #1e4d9e; }
+  .key-quote-attr {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    font-style: normal;
+    margin-top: 8px;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: #aaa;
+    padding: 36px 40px;
+    margin-top: 60px;
+    border-top: 4px solid var(--red);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .footer-logo span { color: var(--red); }
+  footer p { font-size: 12.5px; line-height: 1.7; }
+  footer h4 { color: #fff; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 7px; font-size: 12.5px; }
+  footer ul li a { color: #aaa; text-decoration: none; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid #1a3560;
+    font-size: 11.5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 900px) {
+    .debate-panel.active { grid-template-columns: 1fr; }
+    .panel-sidebar { display: none; }
+    header.masthead { flex-direction: column; align-items: flex-start; }
+    .masthead-meta { text-align: left; }
+    .hero h1 { font-size: 30px; }
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>
+    <a href="#">Politics</a> <a href="#">Economy</a> <a href="#">World</a> <a href="#">Opinion</a> <a href="#">Video</a>
+  </div>
+  <div>Thursday, March 19, 2026 &nbsp;|&nbsp; <strong style="color:#fff">MS Now</strong></div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div>
+    <a class="masthead-logo" href="#">MS<span>Now</span></a>
+    <div class="masthead-tagline">America's source for news that matters.</div>
+  </div>
+  <div class="masthead-meta">
+    Breaking News | Live Updates | In-Depth Coverage<br>
+    Primary Season 2024 — Full Debate Archive
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="primary-nav">
+  <a href="#" class="active">Election 2024</a>
+  <a href="#">Debates</a>
+  <a href="#">Candidates</a>
+  <a href="#">Polls</a>
+  <a href="#">Analysis</a>
+  <a href="#">Video</a>
+  <a href="#">Fact Check</a>
+</nav>
+
+<!-- BREAKING BANNER -->
+<div class="breaking-banner">
+  <span class="breaking-tag">ARCHIVE</span>
+  <span>Full Audio &amp; Transcripts: 2024 Republican &amp; Democratic Primary Debates — All Topics Covered</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">🗳 Election 2024 &nbsp;·&nbsp; Primary Debates</div>
+  <h1>Inside the 2024 Primary Debates: Guns, Immigration, Abortion &amp; the Economy</h1>
+  <p class="hero-summary">Candidates from both parties squared off on the defining issues of the 2024 race. Explore the full audio recordings and searchable transcripts from both the Republican and Democratic primary debates below.</p>
+  <div class="hero-byline">
+    <div>By <strong>MS Now Political Desk</strong></div>
+    <div>Published: March 19, 2024</div>
+    <div>📍 Washington, D.C.</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="debate-tabs">
+  <button class="tab-btn dem active" onclick="switchTab('dem')">
+    <span class="tab-icon">🔵</span> Democratic Primary Debate
+  </button>
+  <button class="tab-btn rep" onclick="switchTab('rep')">
+    <span class="tab-icon">🔴</span> Republican Primary Debate
+  </button>
+</div>
+
+<!-- ===== DEMOCRATIC PANEL ===== -->
+<div class="debate-panel active" id="panel-dem">
+  <div class="panel-main">
+
+    <div class="panel-header">
+      <span class="party-badge dem">Democratic Primary</span>
+      <div class="panel-header-text">
+        <h2>Democratic Presidential Primary Debate</h2>
+        <p>Candidates Ozzie Baxter and Amit Reyes addressed representatives from the NRA, SEIU, NARAL, and FAIR on gun policy, healthcare, abortion, immigration, and workers' rights.</p>
+      </div>
+    </div>
+
+    <!-- AUDIO -->
+    <div class="audio-card">
+      <div class="audio-card-label">Full Debate Recording</div>
+      <audio controls>
+        <source src="/mnt/user-data/uploads/Democratic_Primary_Debate.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- TRANSCRIPT -->
+    <div class="section-divider dem"><span>Full Transcript</span></div>
+
+    <div class="transcript-container">
+      <div class="transcript-header">
+        <span>Debate Transcript — Democratic Primary</span>
+        <div class="search-box">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" placeholder="Search transcript…" oninput="searchTranscript(this, 'dem-transcript')">
+        </div>
+      </div>
+      <div class="transcript-body" id="dem-transcript">
+
+        <div class="transcript-entry">
+          <span class="ts-time">[00:02:01]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NRA Representative — Nicole</div>
+            <div class="ts-text">Gun ownership is an essential right for many Americans. How would your administration protect the Second Amendment rights while addressing public safety concerns?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[00:18:09]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Ozzie Baxter — Campaign Manager</div>
+            <div class="ts-text">Yes, it is true that gun rights and gun ownership is protected under the Constitution. However, you establish limitations on the First Amendment, such as the clear and present danger test established by Schenck versus the US. So, in the name of safety, you cannot yell fire in a crowded theater. Likewise, there should be reasonable limitations on the Second Amendment so that dangerous and vulnerable populations are protected from guns and danger, and that they are not allowed access to guns if they are a threat to society as a whole. It has been found that 125 Americans die each day from gun homicide, be it suicide, police shootings, or homicide. This is not sustainable. This leads to almost 50,000 deaths each year, and this is 50,000 American lives lost that could have been protected by simple legislation.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[01:11:90]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Amit Reyes — Candidate</div>
+            <div class="ts-text">I agree with Ozzie here a lot. I believe we should not prioritize the right of one and then risk hurting the lives of many. The Second Amendment is something that obviously we should not violate when it comes to reasonable background checks. So I think some of the policies I'll implement are universal background checks — not just leave it to the states. We've seen from the past that even this year, we've seen a decrease in total gun violence, but in nine states, gun violence has actually gone up, which means that we should not leave it to the states' discretion. I'll call for universal background checks and that's something I want to make sure every American can feel safe with.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[02:09:82]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">SEIU Representative — Callum</div>
+            <div class="ts-text">As we know, healthcare workers are burning out. What's your plan to make sure that healthcare workers have the proper ratio in hospitals and nursing homes?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[02:23:58]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Amit Reyes — Candidate</div>
+            <div class="ts-text">My family, my parents were immigrants, so I came from a working class family. And I've seen a lot of my peers and colleagues experience stress, overwork, over-exploitation, and it's an issue that's still happening in our country. When it comes to healthcare, I believe there's a couple of implementations we can have. For example, staffing limits — each wing should have a designated minimum staffing level. No section should have only one member working at a time. I also want maximum limitations on corporations to make sure they don't exploit workers, ensuring they get adequate rest so that when they're treating their patients, they're doing so with full energy.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[03:30:23]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Ozzie Baxter — Candidate</div>
+            <div class="ts-text">4 million Americans in the workforce are immigrants and 16% of nurses in the US are immigrants, most of them naturalized. It is possible to use immigration as labor to support our economy as it has done for hundreds of years. Since this nation's founding, we have used immigrant labor to the benefit of our economy. And yes, there are issues with the southern border. But the majority of these immigrants are not criminals — they are seeking refuge. They can contribute to the economy as they have done. Why not let them?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[04:33:83]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NARAL Representative — Syona</div>
+            <div class="ts-text">On March 9th, Wyoming state governor Mark Gordon recently signed legislation that banned abortions after a fetal heartbeat can be detected, generally at six weeks. Most women are unaware of their pregnancy at six weeks. Wyoming is the first state to have chosen to ban abortions at this stage. How would you address the varying laws amongst the states regarding abortion and reproductive healthcare?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[05:06:21]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Ozzie Baxter — Candidate</div>
+            <div class="ts-text">Abortion should be protected — it should have widespread federal protection. Why is it the role of the US government to take away an individual right? These American values are not being upheld. We were written from the very founding of our country that we promote American freedom and individualism. So why should the government be able to restrict the rights of many women who would be burdened financially, would maybe be at risk of dying? Why should they be forced to carry a child when an abortion could be safe? And then what of the child themselves? They would be born unwanted into a struggling household. We can protect both the child and the parent through allowing widespread access to abortions.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[05:57:87]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Amit Reyes — Candidate</div>
+            <div class="ts-text">As a man myself, I'm obviously oblivious to the pain of childbirth. When seeing my wife, eight months pregnant and all the challenges and the pain she had to go through every single day, it really pains me to realize that there are women around this country that have to go through the same pain when they do not wish to have a child. I believe federal implementation programs — more funding towards clinics and centers — and federal legislation and policies that make sure that states don't have too much freedom over what they can choose. I want women around the country to have the choice whether they have a child or not, and not leave it to the state's choice.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[07:01:13]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">FAIR Representative — Joseph</div>
+            <div class="ts-text">What do you think about illegal immigrants that come to America with no intention to adopt American values?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[07:34:54]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Amit Reyes — Candidate</div>
+            <div class="ts-text">I believe that immigrants and illegal immigration should be two separate matters. Illegal immigrants are not something that we want. I will support immigrants, but for illegal immigrants, I want to make sure that they're actually being accounted for. Right now we have policies that treat illegal immigrants in a way that is devoid of American values. I want to support more humane treatment and give them a path to deportation without exploiting them. For illegal immigrants, I want to make sure they receive humane treatment but still are deported.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[08:38:55]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Ozzie Baxter — Candidate</div>
+            <div class="ts-text">If an immigrant is truly illegal and comes across the border with no papers, we should have sensible border policies. And this sensible border policy is not throwing them into inhumane detention centers to rot with malnutrition and abuse. They should be deported. They should not have a right to remain if they have no papers. But this is not a matter of deporting them forcefully. And if they truly wish to contribute to the economy, if they are willing to get a green card, if they are willing to pay taxes, then why not let them contribute to the American economy as they have.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[09:32:84]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NRA Representative — Nicole</div>
+            <div class="ts-text">Concealed carry laws vary by state. Would you push for national standards and how would they balance safety with Second Amendment rights?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[09:53:08]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Ozzie Baxter — Candidate</div>
+            <div class="ts-text">The Second Amendment is important for Americans, of course. But in certain cases, I prioritize the safety of the American populace as a whole over the right of Americans to conceal carry, especially in dangerous events. We go through security at airports, we go through security at concerts. Concealed carry should not be something that exists in everyday life. There should be people who are protected from guns. Yes, it is important to maintain Second Amendment rights for all Americans who are not dangerous, but there are dangerous people who would not use concealed carry as intended — who would use it to harm others. I don't think concealed carry should be widespread.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[10:56:11]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Amit Reyes — Candidate</div>
+            <div class="ts-text">I share similar beliefs. I think obviously I support the Second Amendment for anyone who is a responsible gun owner. But concealed carry is a risk that a lot of Americans are not willing to take. I actually want to incorporate federal legislation and standards for training, increased level of inspection and background checks on those who desire concealed carry. So make sure that everyone who actually does conceal their firearm is more qualified than the people who do not. I would push for a more controlled and federally sustained concealed carry program.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[11:44:45]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">SEIU Representative — Callum</div>
+            <div class="ts-text">What is your legislative plan to get universal paid family and medical leave for all workers?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[12:07:81]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Amit Reyes — Candidate</div>
+            <div class="ts-text">Our country is still plagued after COVID — inflation and prices are still high. I will first make sure that people are being well supported, which means increasing the minimum wage. That's the first step. In my first 100 days, I'll raise the federal minimum wage for all federal contractors and adjust it based on local inflation, depending on each state. My goal is to ensure fair wages for workers because I believe it can lift millions out of poverty and create increased consumer spending. And yes, paid family and medical leave is a fundamental right.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[13:14:65]</span>
+          <div class="ts-content">
+            <div class="ts-speaker dem">Ozzie Baxter — Candidate</div>
+            <div class="ts-text">Workers should have paid leave, workers should have rights. I think that's obvious. After listening to the Republican primary debate, I believe Meredith Kane said the right to unionize should not be a right — that is written into our laws under NLRB versus Jones and Laughlin Steel Corp. I think workers should have the right to unionize, workers should have paid leave, and they should be protected. As the economy is struggling more and more, workers and families should not have to live paycheck to paycheck. They should not have to struggle to put food on the table. Workers should have the right for paid leave and paid time off.</div>
+          </div>
+        </div>
+
+      </div><!-- /.transcript-body -->
+    </div><!-- /.transcript-container -->
+
+  </div><!-- /.panel-main -->
+
+  <!-- SIDEBAR -->
+  <div class="panel-sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title dem">Democratic Candidates</div>
+      <div class="sidebar-card-body">
+        <div class="candidate-item">
+          <div class="candidate-avatar avatar-dem">OB</div>
+          <div class="candidate-info">
+            <div class="candidate-name">Ozzie Baxter</div>
+            <div class="candidate-role">Presidential Candidate</div>
+          </div>
+        </div>
+        <div class="candidate-item">
+          <div class="candidate-avatar avatar-dem">AR</div>
+          <div class="candidate-info">
+            <div class="candidate-name">Amit Reyes</div>
+            <div class="candidate-role">Presidential Candidate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Topics Covered</div>
+      <div class="sidebar-card-body">
+        <ul class="topic-list">
+          <li><span class="topic-num">1</span> Second Amendment &amp; Gun Control</li>
+          <li><span class="topic-num">2</span> Healthcare Worker Staffing</li>
+          <li><span class="topic-num">3</span> Immigration &amp; Border Policy</li>
+          <li><span class="topic-num">4</span> Abortion &amp; Reproductive Rights</li>
+          <li><span class="topic-num">5</span> Concealed Carry Laws</li>
+          <li><span class="topic-num">6</span> Paid Family &amp; Medical Leave</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title dem">Notable Quotes</div>
+      <div class="sidebar-card-body">
+        <div class="key-quote">"50,000 American lives lost that could have been protected by simple legislation."<span class="key-quote-attr">— Ozzie Baxter, on gun violence</span></div>
+        <div class="key-quote">"We should not prioritize the right of one and then risk hurting the lives of many."<span class="key-quote-attr">— Amit Reyes, on gun policy</span></div>
+        <div class="key-quote">"Workers should not have to struggle to put food on the table."<span class="key-quote-attr">— Ozzie Baxter, on workers' rights</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== REPUBLICAN PANEL ===== -->
+<div class="debate-panel" id="panel-rep">
+  <div class="panel-main">
+
+    <div class="panel-header">
+      <span class="party-badge rep">Republican Primary</span>
+      <div class="panel-header-text">
+        <h2>Republican Presidential Primary Debate</h2>
+        <p>Candidates Joanna Crews and Meredith Kane addressed representatives from the NRA, NARAL, SEIU, and FAIR on gun rights, immigration enforcement, abortion, unionization, and tax policy.</p>
+      </div>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-card-label">Full Debate Recording</div>
+      <audio controls>
+        <source src="/mnt/user-data/uploads/Republican_Primary_Debate.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="section-divider rep"><span>Full Transcript</span></div>
+
+    <div class="transcript-container">
+      <div class="transcript-header">
+        <span>Debate Transcript — Republican Primary</span>
+        <div class="search-box">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" placeholder="Search transcript…" oninput="searchTranscript(this, 'rep-transcript')">
+        </div>
+      </div>
+      <div class="transcript-body" id="rep-transcript">
+
+        <div class="transcript-entry">
+          <span class="ts-time">[00:07:35]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NRA Representative — Steph</div>
+            <div class="ts-text">There are debates about having universal background checks and red flag laws. How would your administration implement these measures while protecting individual rights?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[00:28:21]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">I believe that gun access should be protected for everyone. However, I do believe that background checks should be approved just to keep felons away from guns. Because lawful citizens should have the right to own a gun. So that is where the Crews party stands on that.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[00:49:55]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">It's not the weapon, it's the person behind the weapon. I do believe in background checks to a limited degree, but the situation as it is right now is completely untenable. Democrats are forcing way too many regulations on background checks. It's not just felony convictions, but it's also past misdemeanors — and that really shouldn't be a problem. If I was caught drunk driving 10 years ago, that shouldn't affect my ability to purchase a firearm to defend my home, defend my family. I think red flag laws are absolutely necessary because I still do believe that mental health is the most important driver of firearm harms. Background checks should only be for felonies.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[02:00:32]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NARAL Representative — Olivia</div>
+            <div class="ts-text">More than 19 million women living in the United States live in areas with limited access to contraception. Many women are still uneducated about all their contraception options. The more we limit access to contraception, the more pushback is received. Would restricting access hurt the U.S.?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[02:30:10]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">Contraception and abortions is definitely a very contentious topic in the United States right now. As a Christian myself and as a woman, I do believe there should be exceptions to the current contraception laws. Criminal actions should be exempted — if for example the female is sexually assaulted, that definitely should be exempted. Within a certain period like six weeks or 18 weeks, it should be exempt as well. But I still believe in blanket policies that include those exemptions across the United States.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[03:31:87]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">Similar to Meredith Kane, as a woman myself, I understand the importance of having access to contraception. However, as a Republican, I believe that this is something that should be held up to the states. The states should know their citizens the best and they should be able to employ the laws regarding contraception and abortion as well.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[03:52:37]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">SEIU Representative — Ruben</div>
+            <div class="ts-text">How are you actually going to stop companies from retaliating when workers try to unionize, and what specific laws will you push to back up collective bargaining?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[04:30:61]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">We will protect the right to unionize. However, similarly, I do believe that this is something that should be focused more on the states, but I would like to help protect the right to unionize.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[05:04:58]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">I strongly believe that the right to unionize should not be enforced or mandated by the government. This should be a decision left up to businesses, as businesses are governed by the free market. The government should not be allowed to interfere with an employer's right to run their business as they see fit, because I strongly believe in the foundations of America as a free market economy. I don't think it's the government's right to mandate that businesses must allow unions.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[05:39:79]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">FAIR Representative — Chirag</div>
+            <div class="ts-text">Do you agree with this statement? Illegal immigrants increase pressure on schools, healthcare, and local taxpayers, taking away resources from citizens. Please explain your stance.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[05:55:18]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">I have a very strong opinion about this. You know, I've built my campaign around this issue and yes, I do agree with that statement. America is undergoing a crisis right now. There are over 13 million illegal immigrants in our country right now. More are coming in every single day. Border patrol intercepted over 24,000 pounds of fentanyl at the border and it's really just been disastrous. They don't file tax forms. They're just taking away money from hard-working Americans. That's why I'm running for further immigration reform — build a bigger wall, more restrictions, negotiate with Mexico. That's incredibly important to me.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[06:44:93]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">I also agree. I think that illegal immigrants coming in are causing our country to struggle to have the resources to help legal citizens and legal Americans. So I do believe that we should have more protections — we need to enhance the border infrastructure and help keep illegal immigrants out and keep Americans prospering in our great country.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[07:11:51]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">SEIU Representative — Ruben</div>
+            <div class="ts-text">How are you going to stop massive corporations from exploiting undocumented workers and get them on a clear path to citizenship?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[07:27:40]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">Well, if we enhance our border protection, first of all, there won't be illegal immigrants to worry about in that. However, I believe we need to get the illegal immigrants out so that they can have the opportunity to follow the legal process to get into our country.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[07:46:76]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">I fundamentally agree with Crews. But I think there's another option — we should be implementing restrictions on returns for illegal immigrants. If they've already been here once, they can't be here again. America relies on high-skill immigration. If you come here legally, you need to prove that you're able to contribute to the American economy. We already have H-1B visas. We already have pipelines for immigrants to get here and do the work they actually need. We don't need more immigrants. We need more Americans and that's where I stand.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[08:25:18]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NRA Representative — Steph</div>
+            <div class="ts-text">Gun culture and usage differ across the US. How would your administration support responsible gun owners while addressing communities affected by gun violence?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[08:36:74]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">I believe that force should always be met with more force. Right now the Democrats are trying to restrict guns by implementing all these regulations — they haven't worked, we're still seeing school shootings. But imagine a school shooter is met outside with a police officer with a bigger gun. The answer to a stick is a bigger stick. I believe in giving Americans more rights to use their firearms, reducing magazine capacity laws, reducing assault weapon laws, but giving the police a better capability to respond with heavy weaponry.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[09:25:89]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">I think to help the concerns of people who have faced gun violence, we will employ background checks to help keep away previous felons from accessing guns. However, as a former military general and as a person from a more rural state, I understand the importance of wanting to be able to protect your home and family. We should allow people to have guns and protect that right. We don't need more laws banning guns. We need to allow everyone that deserves a gun to have a gun and keep felons away from them.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[10:15:90]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">NARAL Representative — Olivia</div>
+            <div class="ts-text">The Supreme Court overturned Roe v. Wade in Dobbs v. Jackson, which essentially eliminated federal protection for abortion rights and allowed states to set their own laws. Several states have enacted near total bans while others have expanded access. As president, would you support a national standard to promote reproductive choice for American women, particularly those in rural areas?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[10:49:33]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">Although abortion can be very helpful, I think that abortion should be enforced by the states because the state departments do have better knowledge of what is right for their citizens. By giving them control, it limits the federal government from getting involved and enforcing rules on people that they don't know anything about. States have similar values, so their state departments would know what their citizens value and would be able to employ the abortion laws they believe would be best.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[11:22:35]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">I'm going to defer to my previous opinion on this. We need a blanket ban.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[11:31:31]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">FAIR Representative — Chirag</div>
+            <div class="ts-text">What would you do to prevent people from using asylum to bypass normal immigration procedures when they're not under a legitimate threat of persecution?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[11:49:93]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">It's quite simple really. We just reduce the amount of asylum seekers that we can accept. We have quotas right now — we're going to reduce those quotas. We're going to implement stricter background checks. Only the people that actually need to be in America seeking safety should get it, and I think we just really need to reduce the quota and increase the immigration checks in order to make sure that people who need asylum actually get it instead of people simply trying to exploit asylum as a way to get into America.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[12:14:09]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">I agree with Miss Kane here that we need to keep asylum available for those that truly need it, but we should make it so that you are only getting asylum if you really truly need it and we are keeping people that would take advantage of that out — making them go through the process that we put anybody else through. Just protecting that right for people that really do need it and keeping those away that would exploit it.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[13:00:39]</span>
+          <div class="ts-content">
+            <div class="ts-speaker org">SEIU Representative — Ruben</div>
+            <div class="ts-text">What is your concrete plan in your first 100 days to make sure everyone is getting a living wage?</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[13:12:71]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Joanna Crews — Candidate</div>
+            <div class="ts-text">My party heavily believes in employing a flat tax. So we are going to make sure that citizens are earning their hard-earned money and they aren't going to get anything taken away from them that they shouldn't have. We also want to eliminate a lot of tax deductions and simplify the tax code to make it easier to employ and easier to understand. Overall, we just want to work to protect our citizens from heavy taxes that would exploit them.</div>
+          </div>
+        </div>
+
+        <div class="transcript-entry">
+          <span class="ts-time">[13:50:04]</span>
+          <div class="ts-content">
+            <div class="ts-speaker rep">Meredith Kane — Candidate</div>
+            <div class="ts-text">When I hear about taxes, I think Democrat. About that, I believe that we shouldn't do anything. America is a country built on individuals and individual efforts. I believe that we should make everyone pull themselves up by their own bootstraps, you know, the same way with trickle-down economics, Reaganomics. I think we shouldn't do anything about that at all. Just reduce taxes, reduce welfare, make sure people pull themselves up by their own bootstraps. That's my policy there.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.panel-main -->
+
+  <!-- SIDEBAR -->
+  <div class="panel-sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title rep">Republican Candidates</div>
+      <div class="sidebar-card-body">
+        <div class="candidate-item">
+          <div class="candidate-avatar avatar-rep">JC</div>
+          <div class="candidate-info">
+            <div class="candidate-name">Joanna Crews</div>
+            <div class="candidate-role">Presidential Candidate · Former General</div>
+          </div>
+        </div>
+        <div class="candidate-item">
+          <div class="candidate-avatar avatar-rep">MK</div>
+          <div class="candidate-info">
+            <div class="candidate-name">Meredith Kane</div>
+            <div class="candidate-role">Presidential Candidate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Topics Covered</div>
+      <div class="sidebar-card-body">
+        <ul class="topic-list">
+          <li><span class="topic-num">1</span> Universal Background Checks &amp; Red Flag Laws</li>
+          <li><span class="topic-num">2</span> Contraception &amp; Reproductive Rights</li>
+          <li><span class="topic-num">3</span> Unionization &amp; Workers' Rights</li>
+          <li><span class="topic-num">4</span> Illegal Immigration &amp; Border Policy</li>
+          <li><span class="topic-num">5</span> Abortion &amp; Roe v. Wade</li>
+          <li><span class="topic-num">6</span> Asylum Reform</li>
+          <li><span class="topic-num">7</span> Tax Policy &amp; Living Wage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title rep">Notable Quotes</div>
+      <div class="sidebar-card-body">
+        <div class="key-quote rep">"It's not the weapon, it's the person behind the weapon."<span class="key-quote-attr">— Meredith Kane, on gun policy</span></div>
+        <div class="key-quote rep">"The answer to a stick is a bigger stick."<span class="key-quote-attr">— Meredith Kane, on armed response</span></div>
+        <div class="key-quote rep">"We don't need more immigrants. We need more Americans."<span class="key-quote-attr">— Meredith Kane, on immigration</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">MS<span>Now</span></div>
+      <p>America's trusted source for political news, debate coverage, and election analysis. Delivering balanced, factual reporting since 2004.</p>
+    </div>
+    <div>
+      <h4>Election Coverage</h4>
+      <ul>
+        <li><a href="#">Primary Debates Archive</a></li>
+        <li><a href="#">Candidate Profiles</a></li>
+        <li><a href="#">Latest Polls</a></li>
+        <li><a href="#">Fact Checks</a></li>
+        <li><a href="#">Electoral Map</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Topics</h4>
+      <ul>
+        <li><a href="#">Gun Policy</a></li>
+        <li><a href="#">Immigration</a></li>
+        <li><a href="#">Reproductive Rights</a></li>
+        <li><a href="#">Economy &amp; Wages</a></li>
+        <li><a href="#">Healthcare</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 MS Now. All rights reserved.</span>
+    <span>Privacy Policy &nbsp;·&nbsp; Terms of Service &nbsp;·&nbsp; Contact Us</span>
+  </div>
+</footer>
+
+<script>
+  function switchTab(party) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.debate-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector('.tab-btn.' + party).classList.add('active');
+    document.getElementById('panel-' + party).classList.add('active');
+  }
+
+  function searchTranscript(input, transcriptId) {
+    const query = input.value.trim().toLowerCase();
+    const container = document.getElementById(transcriptId);
+    const entries = container.querySelectorAll('.transcript-entry');
+
+    entries.forEach(entry => {
+      const textEl = entry.querySelector('.ts-text');
+      const original = textEl.getAttribute('data-original') || textEl.textContent;
+      if (!textEl.getAttribute('data-original')) {
+        textEl.setAttribute('data-original', original);
+      }
+
+      if (!query) {
+        textEl.innerHTML = original;
+        entry.style.display = '';
+        return;
+      }
+
+      const lower = original.toLowerCase();
+      if (lower.includes(query)) {
+        entry.style.display = '';
+        const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        textEl.innerHTML = original.replace(regex, '<mark>$1</mark>');
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
